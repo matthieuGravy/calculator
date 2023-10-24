@@ -21,9 +21,7 @@ build/
 # Dossiers de sauvegarde et fichiers temporaires (ajustez en fonction de votre éditeur)
 .cache/
 
-# Si vous utilisez Sass, vous pouvez exclure les fichiers CSS générés
-*.css
-*.css.map
+
 
 # Si vous générez des fichiers HTML ou JavaScript minifiés, vous pouvez exclure les fichiers minifiés
 *.min.html
