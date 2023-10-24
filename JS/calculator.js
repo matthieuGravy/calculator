@@ -13,4 +13,3 @@ function multiplier(a, b) {
 function divise(a, b) {
   return a / b;
 }
-console.log(divise(1, 3));
