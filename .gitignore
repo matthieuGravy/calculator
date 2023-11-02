@@ -22,7 +22,6 @@ build/
 .cache/
 
 
-
 # Si vous générez des fichiers HTML ou JavaScript minifiés, vous pouvez exclure les fichiers minifiés
 *.min.html
 *.min.js

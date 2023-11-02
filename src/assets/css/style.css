@@ -1,0 +1,12 @@
+@import url(./reset.css);
+@import url(./screen.css);
+:root {
+  --color-1: #2b303a;
+  --color-2: #55d6be;
+  --color-3: #acfcd9;
+  --color-4: #e000a5;
+  --color-5: #eee5e9;
+}
+body {
+  background-color: var(--color-2);
+}

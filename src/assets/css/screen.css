@@ -1,0 +1,13 @@
+.terme {
+  height: 20px;
+  width: 100px;
+}
+#terme-1 {
+  border: 3px solid red;
+}
+#terme-2 {
+  border: 3px solid blue;
+}
+#area-operator {
+  border: 3px solid green;
+}
