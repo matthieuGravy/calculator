@@ -2,6 +2,10 @@ import { termOne, termTwo, areaOperator, total } from "./screen";
 
 import { detection, toDom } from "./utils";
 
+let a = [];
+let b = [];
+let operatorUsed = false;
+
 /**
  * Storing elements representing numbers in an array
  * @type {HTMLElement[]}
@@ -13,13 +17,10 @@ for (let i = 0; i <= 9; i++) {
     elements.push(element);
   }
 }
+
 /**
  * Adding click event listeners to number elements
  */
-let a = [];
-let b = [];
-let operatorUsed = false;
-
 elements.forEach((element, index) => {
   element.addEventListener("click", () => {
     console.log(`click ${index}`);
@@ -32,6 +33,33 @@ elements.forEach((element, index) => {
       console.log(a);
       toDom(termOne, a);
     }
+    if (
+      document.getElementById("equal").addEventListener("click", () => {
+        if (a.length > 0 && b.length > 0 && operatorUsed) {
+          const numA = parseInt(a.join(""));
+          const numB = parseInt(b.join(""));
+          let result;
+          switch (areaOperator.textContent) {
+            case "+":
+              result = numA + numB;
+              break;
+            case "-":
+              result = numA - numB;
+              break;
+            case "*":
+              result = numA * numB;
+              break;
+            case "/":
+              result = numA / numB;
+              break;
+            default:
+              result = "Invalid operator";
+          }
+          console.log(result);
+          total.textContent = result;
+        }
+      })
+    );
   });
 });
 
@@ -61,7 +89,6 @@ operators.forEach((operator) => {
  */
 document.addEventListener("keydown", (event) => {
   const key = event.key;
-
   if (operators.includes(key)) {
     console.log(key);
     operatorUsed = true;
@@ -99,7 +126,6 @@ document.addEventListener("keydown", (event) => {
         default:
           result = "Invalid operator";
       }
-
       console.log(result);
       total.textContent = result;
     }
