@@ -1,6 +1,8 @@
+.result,
 .terme {
   height: 20px;
   width: 100px;
+  text-align: right;
 }
 #terme-1 {
   border: 3px solid red;
@@ -10,4 +12,7 @@
 }
 #area-operator {
   border: 3px solid green;
+}
+#result {
+  border: 3px solid orange;
 }

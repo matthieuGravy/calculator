@@ -1,19 +1,6 @@
-import { termOne, termTwo, areaOperator } from "./screen";
+import { termOne, termTwo, areaOperator, total } from "./screen";
 
-/**
- * Function to detect a specific key event
- * @param {string} a - The key to detect
- * @param {Event} event - The key event object
- */
-function detection(a, event) {
-  if (event.key === a) {
-    console.log(a);
-  }
-}
-
-function toDom(term, a) {
-  term.textContent = a.join("").replace(/,/g, "");
-}
+import { detection, toDom } from "./utils";
 
 /**
  * Storing elements representing numbers in an array
@@ -26,7 +13,6 @@ for (let i = 0; i <= 9; i++) {
     elements.push(element);
   }
 }
-
 /**
  * Adding click event listeners to number elements
  */
@@ -54,6 +40,7 @@ elements.forEach((element, index) => {
  * @type {string[]}
  */
 const operators = ["+", "-", "*", "/"];
+const equalizer = ["=", "Enter"];
 
 /**
  * Adding event listeners to operator buttons
@@ -74,6 +61,7 @@ operators.forEach((operator) => {
  */
 document.addEventListener("keydown", (event) => {
   const key = event.key;
+
   if (operators.includes(key)) {
     console.log(key);
     operatorUsed = true;
@@ -88,6 +76,32 @@ document.addEventListener("keydown", (event) => {
       a.push(parseInt(key));
       console.log(a);
       toDom(termOne, a);
+    }
+  }
+  if (equalizer.includes(key)) {
+    if (a.length > 0 && b.length > 0 && operatorUsed) {
+      const numA = parseInt(a.join(""));
+      const numB = parseInt(b.join(""));
+      let result;
+      switch (areaOperator.textContent) {
+        case "+":
+          result = numA + numB;
+          break;
+        case "-":
+          result = numA - numB;
+          break;
+        case "*":
+          result = numA * numB;
+          break;
+        case "/":
+          result = numA / numB;
+          break;
+        default:
+          result = "Invalid operator";
+      }
+
+      console.log(result);
+      total.textContent = result;
     }
   }
 });
