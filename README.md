@@ -12,7 +12,7 @@ I significantly complicated a project by creating 4 divs with the purpose of app
 
 ## Ongoing Enhancements and Additional Features for the Project.
 
-There are still improvements to be made:
+### There are still improvements to be made:
 
 - Visual effects
 - General style
@@ -23,7 +23,7 @@ There are still improvements to be made:
 
 <br />
 
-Additionnaly :
+### Additionnaly :
 
 - Adding inputs to correct the divs
 - Implementing a calculation history
@@ -35,9 +35,13 @@ Additionnaly :
 
 - Vanilla JavaScript, HTML, CSS
 
+## Tools Used
+
+- PNPM (Package Manager)
+- Vite.js
+
 <br />
 
 ### Calculator Snapshots
 
-![Screenshot 1](/src/assets/images/Capture%20d’écran%20du%202023-11-08%2014-52-57.png)
-![Screenshot 2](/src/assets/images/Capture%20d’écran%20du%202023-11-08%2014-53-34.png)
+![Screenshot 1](/src/assets/images/Capture%20d’écran%20du%202023-11-08%2014-52-57.png) ![Screenshot 2](/src/assets/images/Capture%20d’écran%20du%202023-11-08%2014-53-34.png)
