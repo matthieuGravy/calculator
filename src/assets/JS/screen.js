@@ -6,14 +6,7 @@ const correctorOne = document.getElementById("input-terme-1-correction");
 const correctorTwo = document.getElementById("input-terme-2-correction");
 
 // check la mutation de termeOne
-function handleDOMMutation(mutationsList, observer) {
-  let termeoneValue = parseFloat(termOne.textContent);
-  let termetwoValue = parseFloat(termTwo.textContent);
-  let areaoperatorValue = parseFloat(areaOperator.textContent);
-  console.log(termeoneValue);
-  console.log(termetwoValue);
-  console.log(areaoperatorValue);
-}
+function handleDOMMutation(mutationsList, observer) {}
 
 const observer = new MutationObserver(handleDOMMutation);
 

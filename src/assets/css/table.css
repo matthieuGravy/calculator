@@ -1,16 +1,32 @@
 table {
-  width: 90%;
-  display: flex;
-  justify-content: center;
-  max-width: 350px;
+  margin: auto;
+  box-sizing: content-box;
   min-height: 200px;
+  background-color: var(--primary);
+  border-radius: 0 0 16px 16px;
+}
+tr {
+  display: flex;
+  flex-direction: row nowrap;
+  justify-content: space-around;
+  width: calc(var(--cellule-w) * 4.2);
   margin: auto;
 }
-
+td {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: calc(var(--cellule-h) + 0.5rem);
+}
 td > button {
   background-color: var(--color-1);
-  border: 1px solid var(--color-2);
-  width: 4rem;
-  height: 6vh;
+  color: var(--color-2);
+  border: none;
+  width: calc(var(--cellule-w) - 0.3rem);
+  height: calc(var(--cellule-h) - 0.3rem);
   font-size: 1.5rem;
+  border-radius: 12px;
+}
+tr:last-of-type {
+  padding-bottom: 8px;
 }

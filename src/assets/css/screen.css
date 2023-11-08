@@ -1,11 +1,12 @@
 .result,
 .terme {
   height: 20px;
-  width: 250px;
+  width: calc(var(--cellule-w) * 4.1);
   text-align: right;
   margin: auto;
   background-color: var(--color-1);
   color: var(--color-3);
+  box-sizing: content-box;
 }
 #terme-1 {
   border: 3px solid red;

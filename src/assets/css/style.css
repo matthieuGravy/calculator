@@ -7,11 +7,26 @@
   --color-3: #acfcd9;
   --color-4: #e000a5;
   --color-5: #eee5e9;
+  --cellule-w: 3.8rem;
+  --cellule-h: 3.8rem;
+  --color-fond: #eee5e9;
+  --primary: #2b303a;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-fond: #2b303a;
+    --primary: #55d6be;
+  }
 }
 body {
-  background-color: var(--color-1);
+  background-color: var(--color-fond);
+}
+#app {
+  height: 100vh;
+  padding-top: 10vh;
 }
 h1 {
+  margin-bottom: 2vh;
   text-align: center;
   font-size: 2rem;
   padding-bottom: 2vh;

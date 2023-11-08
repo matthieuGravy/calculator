@@ -1,15 +1,5 @@
 import { termOne, termTwo, areaOperator, total } from "./screen";
 import { detection, toDom } from "./utils";
-
-/**
- * Array containing arithmetic operators
- * @type {string[]}
- */
-const operators = ["+", "-", "*", "/"];
-const equalizer = ["=", "Enter"];
-let a = [];
-let b = [];
-let operatorUsed = false;
 const isFloat = (n) => Number(n) === n && n % 1 !== 0;
 
 const calculator = () => {
@@ -37,6 +27,15 @@ const calculator = () => {
     total.textContent = result;
   }
 };
+/**
+ * Array containing arithmetic operators
+ * @type {string[]}
+ */
+const operators = ["+", "-", "*", "/"];
+const equalizer = ["=", "Enter"];
+let a = [];
+let b = [];
+let operatorUsed = false;
 
 /**
  * Storing elements representing numbers in an array
