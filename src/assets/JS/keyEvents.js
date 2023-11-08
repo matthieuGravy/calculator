@@ -1,10 +1,42 @@
 import { termOne, termTwo, areaOperator, total } from "./screen";
-
 import { detection, toDom } from "./utils";
 
+/**
+ * Array containing arithmetic operators
+ * @type {string[]}
+ */
+const operators = ["+", "-", "*", "/"];
+const equalizer = ["=", "Enter"];
 let a = [];
 let b = [];
 let operatorUsed = false;
+const isFloat = (n) => Number(n) === n && n % 1 !== 0;
+
+const calculator = () => {
+  if (a.length > 0 && b.length > 0 && operatorUsed) {
+    const numA = parseFloat(a.join(""));
+    const numB = parseFloat(b.join(""));
+    let result;
+    switch (areaOperator.textContent) {
+      case "+":
+        result = numA + numB;
+        break;
+      case "-":
+        result = numA - numB;
+        break;
+      case "*":
+        result = numA * numB;
+        break;
+      case "/":
+        result = numA / numB;
+        break;
+      default:
+        result = "Invalid operator";
+    }
+    console.log(result);
+    total.textContent = result;
+  }
+};
 
 /**
  * Storing elements representing numbers in an array
@@ -35,40 +67,11 @@ elements.forEach((element, index) => {
     }
     if (
       document.getElementById("equal").addEventListener("click", () => {
-        if (a.length > 0 && b.length > 0 && operatorUsed) {
-          const numA = parseInt(a.join(""));
-          const numB = parseInt(b.join(""));
-          let result;
-          switch (areaOperator.textContent) {
-            case "+":
-              result = numA + numB;
-              break;
-            case "-":
-              result = numA - numB;
-              break;
-            case "*":
-              result = numA * numB;
-              break;
-            case "/":
-              result = numA / numB;
-              break;
-            default:
-              result = "Invalid operator";
-          }
-          console.log(result);
-          total.textContent = result;
-        }
+        calculator();
       })
     );
   });
 });
-
-/**
- * Array containing arithmetic operators
- * @type {string[]}
- */
-const operators = ["+", "-", "*", "/"];
-const equalizer = ["=", "Enter"];
 
 /**
  * Adding event listeners to operator buttons
@@ -96,38 +99,16 @@ document.addEventListener("keydown", (event) => {
   }
   if (!isNaN(key) && key >= 0 && key <= 9) {
     if (operatorUsed) {
-      b.push(parseInt(key));
+      b.push(parseFloat(key));
       console.log(b);
       toDom(termTwo, b);
     } else {
-      a.push(parseInt(key));
+      a.push(parseFloat(key));
       console.log(a);
       toDom(termOne, a);
     }
   }
   if (equalizer.includes(key)) {
-    if (a.length > 0 && b.length > 0 && operatorUsed) {
-      const numA = parseInt(a.join(""));
-      const numB = parseInt(b.join(""));
-      let result;
-      switch (areaOperator.textContent) {
-        case "+":
-          result = numA + numB;
-          break;
-        case "-":
-          result = numA - numB;
-          break;
-        case "*":
-          result = numA * numB;
-          break;
-        case "/":
-          result = numA / numB;
-          break;
-        default:
-          result = "Invalid operator";
-      }
-      console.log(result);
-      total.textContent = result;
-    }
+    calculator();
   }
 });

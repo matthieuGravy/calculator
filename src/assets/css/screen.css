@@ -1,8 +1,11 @@
 .result,
 .terme {
   height: 20px;
-  width: 100px;
+  width: 250px;
   text-align: right;
+  margin: auto;
+  background-color: var(--color-1);
+  color: var(--color-3);
 }
 #terme-1 {
   border: 3px solid red;

@@ -1,5 +1,6 @@
 @import url(./reset.css);
 @import url(./screen.css);
+@import url(./table.css);
 :root {
   --color-1: #2b303a;
   --color-2: #55d6be;
@@ -8,5 +9,11 @@
   --color-5: #eee5e9;
 }
 body {
-  background-color: var(--color-2);
+  background-color: var(--color-1);
+}
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  padding-bottom: 2vh;
+  color: var(--color-4);
 }

@@ -1,0 +1,16 @@
+table {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  max-width: 350px;
+  min-height: 200px;
+  margin: auto;
+}
+
+td > button {
+  background-color: var(--color-1);
+  border: 1px solid var(--color-2);
+  width: 4rem;
+  height: 6vh;
+  font-size: 1.5rem;
+}
