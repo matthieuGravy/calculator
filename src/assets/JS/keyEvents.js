@@ -22,38 +22,14 @@ const calculator = () => {
       default:
         result = "Invalid operator";
     }
-    console.log(result);
     total.textContent = result;
   }
 };
-/**
- * Array containing arithmetic operators
- * @type {string[]}
- */
+
 const operators = ["+", "-", "*", "/"];
 const equalizer = ["=", "Enter"];
 const point = ".";
 const float = document.getElementById("point");
-
-let a = [];
-let b = [];
-let operatorUsed = false;
-let keyCounter = 0;
-let floatClicked = false;
-
-float.addEventListener("click", () => {
-  if (!floatClicked) {
-    if (operatorUsed) {
-      b.push(float.textContent);
-      toDom(termTwo, b);
-    } else {
-      a.push(float.textContent);
-      toDom(termeOne, a);
-    }
-    floatClicked = true;
-  }
-});
-
 /**
  * Storing elements representing numbers in an array
  * @type {HTMLElement[]}
@@ -66,29 +42,56 @@ for (let i = 0; i <= 9; i++) {
   }
 }
 
+let a = [];
+let b = [];
+let operatorUsed = false;
+let keyCounter = 0;
+let floatClicked = false;
+
+const handleNumberClick = (number) => {
+  if (operatorUsed) {
+    b.push(number);
+    toDom(termTwo, b);
+  } else {
+    a.push(number);
+    toDom(termOne, a);
+  }
+};
+
+const handleFloat = () => {
+  if (!floatClicked) {
+    if (operatorUsed) {
+      b.push(point);
+      toDom(termTwo, b);
+    } else {
+      a.push(point);
+      toDom(termeOne, a);
+    }
+    floatClicked = true;
+  }
+};
+
+const handleEqualizer = () => {
+  calculator();
+  a.length = 0;
+  b.length = 0;
+  floatClicked = false;
+  return (operatorUsed = false);
+};
+
+float.addEventListener("click", handleFloat);
+
 /**
  * Adding click event listeners to number elements
  */
 elements.forEach((element, index) => {
   element.addEventListener("click", () => {
     console.log(`click ${index}`);
-    if (operatorUsed) {
-      b.push(index);
-      console.log(b);
-      toDom(termTwo, b);
-    } else {
-      a.push(index);
-      console.log(a);
-      toDom(termOne, a);
-    }
+    handleNumberClick(index);
     if (
-      document.getElementById("equal").addEventListener("click", () => {
-        calculator();
-        a.length = 0;
-        b.length = 0;
-        floatClicked = false;
-        return (operatorUsed = false);
-      })
+      document
+        .getElementById("equal")
+        .addEventListener("click", handleEqualizer)
     );
   });
 });
@@ -100,7 +103,6 @@ operators.forEach((operator) => {
   const buttonOperation = document.getElementById(`operator-${operator}`);
   if (buttonOperation) {
     buttonOperation.addEventListener("click", () => {
-      console.log(`button operation ${operator}`);
       operatorUsed = true;
       areaOperator.textContent = operator;
     });
@@ -113,38 +115,16 @@ operators.forEach((operator) => {
 document.addEventListener("keydown", (event) => {
   const key = event.key;
   if (key === point || key === ",") {
-    if (!floatClicked) {
-      if (operatorUsed) {
-        b.push(point);
-        toDom(termTwo, b);
-      } else {
-        a.push(point);
-        toDom(termeOne, a);
-      }
-    }
+    handleFloat();
   }
-
   if (operators.includes(key)) {
-    console.log(key);
     operatorUsed = true;
     areaOperator.textContent = key;
   }
   if (!isNaN(key) && key >= 0 && key <= 9) {
-    if (operatorUsed) {
-      b.push(parseFloat(key));
-      console.log(b);
-      toDom(termTwo, b);
-    } else {
-      a.push(parseFloat(key));
-      console.log(a);
-      toDom(termOne, a);
-    }
+    handleNumberClick(parseFloat(key));
   }
   if (equalizer.includes(key)) {
-    calculator();
-    a.length = 0;
-    b.length = 0;
-    floatClicked = false;
-    return (operatorUsed = false);
+    handleEqualizer();
   }
 });
