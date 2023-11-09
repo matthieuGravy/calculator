@@ -4,7 +4,7 @@
 set -e
 
 # construire
-npm run build
+pnpm run build
 
 # Naviguez dans le répertoire de sortie de la compilation
 cd dist
@@ -24,6 +24,6 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
 
 # si vous déployez sur https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:matthieuGravy/calculator.git main:gh-deploy-final
+git push -f git@github.com:matthieuGravy/calculator.git main:deploy-calculator
 
 cd -

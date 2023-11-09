@@ -22,7 +22,6 @@ body {
   background-color: var(--color-fond);
 }
 #app {
-  height: 100vh;
   padding-top: 10vh;
 }
 h1 {
