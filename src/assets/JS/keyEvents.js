@@ -1,8 +1,5 @@
 import { termOne, termTwo, areaOperator, total } from "./screen";
-import { detection, toDom } from "./utils";
-
-const float = document.getElementById("point").textContent;
-const isFloat = (n) => Number(n) === n && n % 1 !== 0;
+import { toDom } from "./utils";
 
 const calculator = () => {
   if (a.length > 0 && b.length > 0 && operatorUsed) {
@@ -35,13 +32,27 @@ const calculator = () => {
  */
 const operators = ["+", "-", "*", "/"];
 const equalizer = ["=", "Enter"];
+const point = ".";
+const float = document.getElementById("point");
 
-console.log(float);
 let a = [];
 let b = [];
 let operatorUsed = false;
-let operatorTotalised = false;
 let keyCounter = 0;
+let floatClicked = false;
+
+float.addEventListener("click", () => {
+  if (!floatClicked) {
+    if (operatorUsed) {
+      b.push(float.textContent);
+      toDom(termTwo, b);
+    } else {
+      a.push(float.textContent);
+      toDom(termeOne, a);
+    }
+    floatClicked = true;
+  }
+});
 
 /**
  * Storing elements representing numbers in an array
@@ -73,6 +84,10 @@ elements.forEach((element, index) => {
     if (
       document.getElementById("equal").addEventListener("click", () => {
         calculator();
+        a.length = 0;
+        b.length = 0;
+        floatClicked = false;
+        return (operatorUsed = false);
       })
     );
   });
@@ -97,6 +112,18 @@ operators.forEach((operator) => {
  */
 document.addEventListener("keydown", (event) => {
   const key = event.key;
+  if (key === point || key === ",") {
+    if (!floatClicked) {
+      if (operatorUsed) {
+        b.push(point);
+        toDom(termTwo, b);
+      } else {
+        a.push(point);
+        toDom(termeOne, a);
+      }
+    }
+  }
+
   if (operators.includes(key)) {
     console.log(key);
     operatorUsed = true;
@@ -115,8 +142,9 @@ document.addEventListener("keydown", (event) => {
   }
   if (equalizer.includes(key)) {
     calculator();
-    operatorUsed = false;
     a.length = 0;
     b.length = 0;
+    floatClicked = false;
+    return (operatorUsed = false);
   }
 });
