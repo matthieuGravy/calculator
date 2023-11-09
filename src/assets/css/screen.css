@@ -1,6 +1,6 @@
 .result,
 .terme {
-  height: 20px;
+  height: 30px;
   width: calc(var(--cellule-w) * 4.1);
   text-align: right;
   margin: auto;

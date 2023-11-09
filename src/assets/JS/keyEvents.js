@@ -1,5 +1,7 @@
 import { termOne, termTwo, areaOperator, total } from "./screen";
 import { detection, toDom } from "./utils";
+
+const float = document.getElementById("point").textContent;
 const isFloat = (n) => Number(n) === n && n % 1 !== 0;
 
 const calculator = () => {
@@ -33,9 +35,13 @@ const calculator = () => {
  */
 const operators = ["+", "-", "*", "/"];
 const equalizer = ["=", "Enter"];
+
+console.log(float);
 let a = [];
 let b = [];
 let operatorUsed = false;
+let operatorTotalised = false;
+let keyCounter = 0;
 
 /**
  * Storing elements representing numbers in an array
@@ -109,5 +115,8 @@ document.addEventListener("keydown", (event) => {
   }
   if (equalizer.includes(key)) {
     calculator();
+    operatorUsed = false;
+    a.length = 0;
+    b.length = 0;
   }
 });
